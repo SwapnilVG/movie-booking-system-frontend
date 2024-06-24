@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet, Navigate } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
 import 'daisyui/dist/full.css';
 
 const DrawerLayout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const user = useSelector((state) => state.user.user);
 
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    setUser(storedUser);
-  }, []);
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);

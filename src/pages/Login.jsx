@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../store';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,10 +20,7 @@ const Login = () => {
       const response = await axios.post('https://movie-booking-system-backend.onrender.com/api/users/login', formData);
       const { token, user } = response.data;
 
-      // Save token and user information in localStorage
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify({ email: user.email, role: user.role }));
-
+      dispatch(userActions.login({ token, user }));
       toast.success('Login successful!');
 
       // Navigate to appropriate page based on user role
