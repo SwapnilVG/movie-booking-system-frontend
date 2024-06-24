@@ -20,10 +20,10 @@ function App() {
       <div className="container mx-auto h-screen">
         <BrowserRouter>
           <Routes>
+              <Route path="/login" element={<Login />} />
             <Route path='/' element={<DrawerLayout />}>
               <Route index element={<Home />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
               <Route path="/booking" element={<PrivateRoute element={Booking} />} />
               <Route path="/admin/screen-management" element={<AdminRoute element={AdminScreenManagement} />} />
               <Route path="/admin/booking-management" element={<AdminRoute element={AdminBookingManagement} />} />

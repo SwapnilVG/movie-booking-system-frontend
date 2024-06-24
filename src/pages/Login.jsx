@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { userActions } from '../store';
@@ -59,6 +59,9 @@ const Login = () => {
         />
       </div>
       <button type="submit" className="btn btn-primary mt-4">Login</button>
+      <p className=' my-3'>
+        Don't have an account? <Link className=' text-blue-600' to="/register">Signup</Link>
+      </p>
     </form>
   );
 };

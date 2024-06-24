@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Register = () => {
@@ -89,6 +89,10 @@ const Register = () => {
         {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
       </div>
       <button type="submit" className="btn btn-primary mt-4">Register</button>
+
+      <p className=' my-3'>
+        Already have an account? <Link className=' text-blue-600' to="/login">Login</Link>
+      </p>
     </form>
   );
 };
